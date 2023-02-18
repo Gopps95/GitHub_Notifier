@@ -15,16 +15,17 @@ chrome.browserAction.onClicked.addListener(function(tab) {
         message: message.text
       });
     }
-  });
-  const express = require('express')
-const app = express()
+  }); 
+const { Octokit } = require("@octokit/rest");
 
-app.use(manifest.json())
+const octokit = new Octokit({ auth: "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" });
 
-app.post('/webhook', (req, res) => {
-  const data = req.body
-  // Do something with the data
-  res.send('Webhook received')
-})
-
-app.listen(3000, () => console.log('Webhook server listening on port 3000'))
+octokit.pulls.create({
+  owner: "my-org",
+  repo: "my-repo",
+  title: "My pull request",
+  head: "my-feature-branch",
+  base: "main",
+}).then((response) => {
+  console.log(response.data);
+});
