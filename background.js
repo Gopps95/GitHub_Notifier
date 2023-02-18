@@ -16,16 +16,8 @@ chrome.browserAction.onClicked.addListener(function(tab) {
       });
     }
   }); 
-const { Octokit } = require("@octokit/rest");
-
-  const octokit = new Octokit({ auth: "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" });
-  octokit.pulls.create({
-    owner: "my-org",
-    repo: "my-repo",
-    title: "My pull request",
-    head: "my-feature-branch",
-    base: "main",
-  }).then((response) => {
-    console.log(response.data);
+  const octokit = new Octokit({
+    auth: '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'
+  })
   
-});
+  await octokit.request('GET /notifications', {})
