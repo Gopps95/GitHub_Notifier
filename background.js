@@ -12,7 +12,7 @@ import { Octokit, App } from "https://cdn.skypack.dev/octokit";
     }
   }); 
   const octokit = new Octokit({
-    auth: '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'
+    auth: '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'
   })
   
  octokit.request('GET /notifications', {}).then((data) => {
