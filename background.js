@@ -1,9 +1,4 @@
-
-chrome.browserAction.onClicked.addListener(function(tab) {
-    
-    chrome.runtime.openOptionsPage();
-  });
-  
+import { Octokit, App } from "https://cdn.skypack.dev/octokit";
 
   chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
     if (message.type === "notification") {
@@ -17,7 +12,10 @@ chrome.browserAction.onClicked.addListener(function(tab) {
     }
   }); 
   const octokit = new Octokit({
-    auth: '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'
+    auth: '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'
   })
   
-  await octokit.request('GET /notifications', {})
+ octokit.request('GET /notifications', {}).then((data) => {
+
+  console.log(data)
+ });
